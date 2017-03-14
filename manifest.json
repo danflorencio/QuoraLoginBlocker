@@ -1,0 +1,25 @@
+{
+  "manifest_version": 2,
+
+  "name": "Quora Login Blocker",
+  "description": "This extension gets rid of that pesky login prompt from Quora.",
+  "version": "0.1",
+
+  "background": {
+    "scripts": ["background.js"]
+  },
+
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html",
+    "default_title": "Begin"
+  },
+
+  "permissions": [
+    "<all_urls>",
+    "activeTab",
+    "storage",
+    "https://ajax.googleapis.com/"
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}
