@@ -1,12 +1,6 @@
 {
   var redirect;
   var reloaded = false;
-  var sitemap = "https://www.quora.com/sitemap";
-  var topic = "https://www.quora.com/topic";
-  var profile = "https://www.quora.com/profile";
-  var about = "https://www.quora.com/about";
-  var careers = "https://www.quora.com/careers";
-  var contact = "https://www.quora.com/contact";
 
   var validPaths = new Array(5);
   validPaths.push("quora.com/sitemap", "quora.com/topic", "quora.com/profile",
