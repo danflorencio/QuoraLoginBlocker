@@ -1,10 +1,29 @@
 {
   var redirect;
   var reloaded = false;
+  var sitemap = "https://www.quora.com/sitemap";
+  var topic = "https://www.quora.com/topic";
+  var profile = "https://www.quora.com/profile";
+  var about = "https://www.quora.com/about";
+  var careers = "https://www.quora.com/careers";
+  var contact = "https://www.quora.com/contact";
+
+  var validPaths = new Array(5);
+  validPaths.push("quora.com/sitemap", "quora.com/topic", "quora.com/profile",
+                 "quora.com/about", "quora.com/careers", "quora.com/contact");
 
   chrome.runtime.onInstalled.addListener(function(info) {
 
   });
+
+  function isValidURL(path) {
+    for (var i = 0; i < validPaths.length; i++) {
+      if (path.includes(validPaths[i])) {
+        return true;
+      }
+    }
+    return false;
+  }
 
   // Reload page
   function reload() {
@@ -16,9 +35,7 @@
       var url = new URL(tab.url);
       var domain = url.hostname;
       console.log(url.href.charAt(url.href.length-8));
-      if (domain === "www.quora.com" && !(url.href.includes("https://www.quora.com/search?"))
-          && !(url.href.includes("https://www.quora.com/sitemap"))
-          && !(url.href.includes("https://www.quora.com/topic"))) {
+      if (domain === "www.quora.com" && !(isValidURL(url.href))) {
         console.log("let's block it")
         if (url.href.charAt(url.href.length-8) != "?") {
           url += "?share=1";
