@@ -4,7 +4,8 @@
 
   var validPaths = new Array(5);
   validPaths.push("quora.com/sitemap", "quora.com/topic", "quora.com/profile",
-                 "quora.com/about", "quora.com/careers", "quora.com/contact");
+                 "quora.com/about", "quora.com/careers", "quora.com/contact",
+                 "quora.com/search");
 
   chrome.runtime.onInstalled.addListener(function(info) {
 
@@ -29,6 +30,8 @@
       var url = new URL(tab.url);
       var domain = url.hostname;
       console.log(url.href.charAt(url.href.length-8));
+      // Make it shorter, us .includes in the first condition?
+      // if (domain.includes("quora.com") && domain.includes("?share=1")...)
       if (domain === "www.quora.com" && !(isValidURL(url.href))) {
         console.log("let's block it")
         if (url.href.charAt(url.href.length-8) != "?") {
